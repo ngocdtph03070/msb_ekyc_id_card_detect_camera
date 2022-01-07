@@ -4,16 +4,15 @@ version: 1.0.0
 homepage: https://github.com/tuyentopebox
 repository: https://github.com/tuyentopebox/msb_ekyc_camera.git
 
-
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
   # Flutter versions prior to 1.10 did not support the flutter.plugin.platforms map.
-  flutter: ">=1.10.0 <2.0.0"
+  # flutter: ">=1.10.0 <2.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  meta: ^1.1.7
+  meta: ^1.7.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

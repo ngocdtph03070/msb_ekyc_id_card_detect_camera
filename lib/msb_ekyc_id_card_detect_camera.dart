@@ -1,5 +1,8 @@
 library msb_ekyc_id_card_detect_camera;
+
 import 'dart:convert';
+
+import 'package:meta/meta.dart';
 
 ///
 /// Import

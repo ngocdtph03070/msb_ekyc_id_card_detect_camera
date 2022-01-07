@@ -8,17 +8,17 @@ part of '../../msb_ekyc_id_card_detect_camera.dart';
 class IdCardDetectWidget extends StatefulWidget {
   ///
   /// Controller.
-  IdCardDetectController _idCardDetectController;
+  IdCardDetectController? _idCardDetectController;
 
   ///
   /// UnsupportedDescription
-  String _unsupportedDescription;
+  String? _unsupportedDescription;
 
   ///
   /// Constructor.
   IdCardDetectWidget({
-    @required IdCardDetectController idCardDetectController,
-    String unsupportedDescription,
+    required IdCardDetectController idCardDetectController,
+    String? unsupportedDescription,
   }) {
     _idCardDetectController = idCardDetectController;
     _unsupportedDescription = unsupportedDescription;
@@ -32,24 +32,23 @@ class IdCardDetectWidget extends StatefulWidget {
 
 ///
 /// _FaceDetectWidgetState
-class _IdCardDetectWidgetState
-    extends State<IdCardDetectWidget> {
-
+class _IdCardDetectWidgetState extends State<IdCardDetectWidget> {
   @override
   void initState() {
     super.initState();
     //Create
-    MSBEkycCameraIdCardDetectPlatform.instance.addListener(_widgetCreatedListener);
+    MSBEkycCameraIdCardDetectPlatform.instance
+        .addListener(_widgetCreatedListener);
     MSBEkycCameraIdCardDetectPlatform.instance.unsupportedPlatformDescription =
-        widget._unsupportedDescription;
+        widget._unsupportedDescription ?? "";
   }
 
   ///
   /// CreatedListener.
   _widgetCreatedListener() {
     if (widget._idCardDetectController != null) {
-      if (widget._idCardDetectController._idCardDetectViewCreated != null) {
-        widget._idCardDetectController._idCardDetectViewCreated();
+      if (widget._idCardDetectController?._idCardDetectViewCreated != null) {
+        widget._idCardDetectController?._idCardDetectViewCreated();
       }
     }
   }
@@ -58,12 +57,14 @@ class _IdCardDetectWidgetState
   void dispose() {
     super.dispose();
     //Release
-    MSBEkycCameraIdCardDetectPlatform.instance.removeListener(_widgetCreatedListener);
+    MSBEkycCameraIdCardDetectPlatform.instance
+        .removeListener(_widgetCreatedListener);
     widget._idCardDetectController?.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return MSBEkycCameraIdCardDetectPlatform.instance.buildIdCardDetectView(context);
+    return MSBEkycCameraIdCardDetectPlatform.instance
+        .buildIdCardDetectView(context);
   }
 }
